@@ -12,7 +12,7 @@ def check_required_columns(df, required_columns):
 # First Factor being Age
 def average_age(df, team):
     team_data = df[df["TEAM_ABBREVIATION"] == team]
-    return team_data["AGE"].mean() if not team_data.empty else None
+    return round(team_data["AGE"].mean(), 1) if not team_data.empty else None
 
 
 # Second Factor being Assists
@@ -33,7 +33,7 @@ def field_goal_percentage(df, team):
     team_data = df[df["TEAM_ABBREVIATION"] == team]
     fg_made = team_data["FGM"].sum()
     fg_attempted = team_data["FGA"].sum()
-    return (fg_made / fg_attempted) if fg_attempted != 0 else None
+    return round(100 * (fg_made / fg_attempted), 2) if fg_attempted != 0 else None
 
 # Fifth Factor being Total Points
 def total_points(df, team):
