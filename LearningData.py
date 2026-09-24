@@ -31,7 +31,7 @@ def FGP(df, playoffteams):
             team_fg[teamStats["TEAM_ABBREVIATION"]]["FGA"] += teamStats["FGA"]
     for team, stats in team_fg.items():
         if stats["FGA"] != 0:
-            fgpct = stats["FGM"] / stats["FGA"]
+            fgpct = (stats["FGM"] / stats["FGA"]) * 100
             team_fgp[team] = fgpct
         else:
             print("ERROR, DIVISION BY ZERO")
@@ -45,7 +45,7 @@ def plotFGP(team_fgp, title, label):
     plt.barh(teams, fgpct, color='skyblue')
     plt.xlabel(label)
     plt.title(title)
-    plt.xlim(0, 1)
+    plt.xlim(0, 60)
     plt.gca ().invert_yaxis()
     plt.show()
 
